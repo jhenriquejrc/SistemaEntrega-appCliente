@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Sistema Entregas</string>
+    <string name="title_activity_navegacao">Carreto</string>
+
+    <string name="navigation_drawer_open">Abrir menu navegação</string>
+    <string name="navigation_drawer_close">Fechar menu navegação</string>
+
+    <string name="sobre">Sobre</string>
+    <string name="todos">Todos fornecedores</string>
+    <string name="novo">Criar novo fornecedor</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
