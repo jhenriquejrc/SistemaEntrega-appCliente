@@ -9,9 +9,11 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.joaohenrique.entregas.R;
 import com.joaohenrique.entregas.fornecedores.modelo.Fornecedor;
 import com.joaohenrique.entregas.fornecedores.view.ListaTodosAdaptador;
 import com.joaohenrique.entregas.fornecedores.webservice.FornecedorService;
@@ -24,7 +26,6 @@ import java.io.IOException;
 import java.util.List;
 
 import okhttp3.ResponseBody;
-import com.joaohenrique.entregas.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +35,7 @@ public class ListaTodos extends AppCompatActivity {
     Context contexto = this;
     ListView listView;
     List<Fornecedor> dados;
+    ImageButton btnNovo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,15 @@ public class ListaTodos extends AppCompatActivity {
         setContentView(R.layout.listatodos);
         listView = (ListView) findViewById(R.id.minha_lista);
         consultaServidor();
+
+        btnNovo = (ImageButton) findViewById(R.id.imageButton);
+        btnNovo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(),CriarFornecedor.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

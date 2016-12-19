@@ -74,9 +74,6 @@ public class Navegacao extends AppCompatActivity
         if (id == R.id.todos) {
             Intent i = new Intent(this, ListaTodos.class);
             startActivity(i);
-        } else if (id == R.id.novo) {
-            Intent i = new Intent(this, CriarFornecedor.class);
-            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

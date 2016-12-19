@@ -1,8 +1,10 @@
 package com.joaohenrique.entregas.fornecedores.modelo;
 
+import com.joaohenrique.entregas.fornecedores.webservice.handlers.ErroRecurso;
+
 import java.math.BigDecimal;
 
-public class Fornecedor {
+public class Fornecedor extends ErroRecurso {
 
     private Integer codFornecedor;
     private String nome;
@@ -11,6 +13,7 @@ public class Fornecedor {
     private String fone;
     private BigDecimal faturamentoAnual;
     private String dataCadastro;
+
 
     public Fornecedor() {
     }

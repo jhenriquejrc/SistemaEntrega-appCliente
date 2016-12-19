@@ -14,6 +14,10 @@ import com.joaohenrique.entregas.fornecedores.webservice.FornecedorService;
 import com.joaohenrique.entregas.fornecedores.webservice.Servico;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,11 +33,15 @@ public class CriarFornecedor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_fornecedor);
         id = getIntent().getIntExtra("id", -1);
-        if (id != -1) preencherForm();
+        if (id != -1){
+            setTitle("Editar Fornecedor");
+            preencherForm();
+        }
     }
 
 
     public void cadastrar(View v) {
+
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setCnpj(((EditText) findViewById(R.id.cnpj)).getText().toString());
         fornecedor.setDataCadastro(((EditText) findViewById(R.id.dataCadastro)).getText().toString());
@@ -48,6 +56,7 @@ public class CriarFornecedor extends AppCompatActivity {
     }
 
     private void atualizar(Fornecedor fornecedor) {
+        setTitle("Editar Fornecedor");
         FornecedorService servico = Servico.criarServico(FornecedorService.class);
         Call<Void> chamada = servico.atualizar(id,fornecedor);
         chamada.enqueue(new Callback<Void>() {
@@ -55,7 +64,7 @@ public class CriarFornecedor extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 204) {
                     Toast.makeText(contexto, "Fornecedor atualizado", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(contexto, Navegacao.class);
+                    Intent i = new Intent(contexto, ListaTodos.class);
                     startActivity(i);
                 }
             }
@@ -67,7 +76,8 @@ public class CriarFornecedor extends AppCompatActivity {
         });
     }
 
-    private void criar(Fornecedor fornecedor) {
+    private void criar(final Fornecedor fornecedor) {
+
         FornecedorService servico = Servico.criarServico(FornecedorService.class);
         Call<Fornecedor> chamada = servico.criar(fornecedor);
         chamada.enqueue(new Callback<Fornecedor>() {
@@ -76,8 +86,11 @@ public class CriarFornecedor extends AppCompatActivity {
                 // Toast.makeText(contexto,"Código da resposta: " + response.code(),Toast.LENGTH_LONG).show();
                 if (response.code() == 201) {
                     Toast.makeText(contexto, "Fornecedor criado", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(contexto, ListaTodos.class);
+                    startActivity(i);
                 } else if (response.code() == 400) {
-                    Toast.makeText(contexto, "Já existe um fornecedor com esse nome!", Toast.LENGTH_LONG).show();
+                    response.body();
+                    Toast.makeText(contexto,"Fornecedor com o mesmo nome cadastrado", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -5,11 +5,13 @@
         <item
             android:id="@+id/todos"
             android:icon="@drawable/ic_list_black_24dp"
-            android:title="Todos" />
+            android:title="Fornecedores" />
+    </group>
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/novo"
-            android:icon="@drawable/ic_create_black_24dp"
-            android:title="Novo" />
+            android:id="@+id/clientes"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="Clientes" />
     </group>
 
 </menu>

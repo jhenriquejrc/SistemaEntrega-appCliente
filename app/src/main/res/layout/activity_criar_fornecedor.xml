@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
@@ -76,36 +77,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Faturamento Anual: " />
-
+            android:text="Faturamento Anual: "
+            />
         <EditText
             android:id="@+id/faturamentoAnual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </TableRow>
 
-    <TableRow
+    </TableRow>
+<TableRow>
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Data de cadastro: " />
-
-        <EditText
-            android:id="@+id/dataCadastro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </TableRow>
-
+        android:layout_height="wrap_content"
+        android:text="Data de Cadastro: "
+        />
+    <EditText
+        android:id="@+id/dataCadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false" />
+</TableRow>
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">
 
         <Button
-            android:text="Salvar"
+            android:text="Cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button"
